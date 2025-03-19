@@ -2,11 +2,6 @@ import { NextResponse } from "next/server";
 
 import pool from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
-import OpenAI from "openai";
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
 
 
 
@@ -14,26 +9,38 @@ const openai = new OpenAI({
 export async function POST(request: Request) {
   const { userId } = await auth();
 
-  if (!userId)
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!userId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { command } = await request.json();
-  if (!command)
-    return NextResponse.json({ error: "Command required" }, { status: 400 });
+  if (!command) return NextResponse.json({ error: "Command required" }, { status: 400 });
+
 
   try {
-    const image = await openai.images.generate({
-        prompt: command,
-        n: 1,
-        size: "1024x1024",
-        model: "dall-e-3", // DALL·E 3 explicit ga use chesthunnam
-      });
-  
-      const imageUrl = image.data[0].url;
-      console.log("Generated Image URL:", imageUrl);
+    // Hugging Face Stable Diffusion API
+    const response = await fetch(
+      "https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5",
+      {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${process.env.HF_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          inputs: command, // Prompt
+        }),
+      }
+    );
 
- 
-    
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.log("HF Error:", errorText);
+      throw new Error(`Hugging Face API error: ${response.statusText}`);
+    }
+
+    // Response is a binary image – convert to URL
+    const imageBlob = await response.blob();
+    const imageUrl = URL.createObjectURL(imageBlob);
+    console.log("Generated Image URL:", imageUrl);
 
     // Save to Supabase
     const client = await pool.connect();
@@ -51,10 +58,7 @@ export async function POST(request: Request) {
       client.release();
     }
   } catch (error) {
-    console.error("OpenAI Error:", error);
-    return NextResponse.json(
-      { error: "Image generation failed" },
-      { status: 500 }
-    );
+    console.error("HF Error:", error);
+    return NextResponse.json({ error: "Image generation failed" }, { status: 500 });
   }
 }
