@@ -1,51 +1,73 @@
 "use client";
 
+import { SignedIn, SignedOut, SignIn, SignInButton } from "@clerk/nextjs";
 import { useState } from "react";
-import { useUser, SignInButton, SignedIn, SignedOut, SignOutButton } from "@clerk/nextjs";
-import Image from "next/image";
+import Header from "./components/Header";
 
 export default function Home() {
-  const { user } = useUser();
-  const [command, setCommand] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [prompt, setPrompt] = useState("");
+  const [imageSrc, setImageSrc] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleGenerate = async () => {
-    const res = await fetch("/api/generate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" }, 
-      body: JSON.stringify({ command }),
-    });
-    const data = await res.json();
-    console.log(data);
-    if (data.imageUrl) setImageUrl(data.imageUrl);
-  }; 
+  const handleGenerateImage = async () => {
+    if (!prompt) return;
+    
+    setLoading(true);
+    setImageSrc("");
+
+    try {
+      const response = await fetch("/api/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt }),
+      });
+
+      const data = await response.json();
+      setImageSrc(data.imageUrl);
+    } catch (error) {
+      console.error("Error generating image:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <div style={{ padding: "20px", textAlign: "center" }}>
-      <SignedIn>
+<>
+<SignedIn>
+<Header/>
 
-        <SignOutButton/>
-        <h1>Hey, {user?.firstName}! Generate an Image</h1>
-        <input
-          type="text"
-          value={command}
-          onChange={(e) => setCommand(e.target.value)}
-          placeholder="Enter a command (e.g., 'dog')"
-          style={{ padding: "5px", margin: "10px" }}
-        />
-        <button onClick={handleGenerate} style={{ padding: "5px 10px" }}>
-          Generate
-        </button>
-        {imageUrl && (
-          <div>
-            <Image width={100} height={100} src={imageUrl} alt="Generated" style={{ marginTop: "20px" }} />
-          </div>
-        )}
-      </SignedIn>
-      <SignedOut>
-        <p>Sign in to generate images!</p>
-        <SignInButton />
-      </SignedOut>
+<div className="flex flex-col items-center justify-center min-h-screen p-6">
+
+      <h1 className="text-2xl font-bold mb-4">Generate Image</h1>
+
+      <input
+        type="text"
+        placeholder="Enter a prompt..."
+        value={prompt}
+        onChange={(e) => setPrompt(e.target.value)}
+        className="px-4 py-2 border rounded-md text-black w-80"
+      />
+
+      <button
+        onClick={handleGenerateImage}
+        className="mt-4 px-6 py-2 bg-blue-600 rounded-md hover:bg-blue-700 transition"
+        disabled={loading}
+      >
+        {loading ? "Generating..." : "Generate Image"}
+      </button>
+
+      {imageSrc && (
+        <div className="mt-6">
+          <img src={imageSrc} alt="Generated" className="rounded-md shadow-lg" />
+        </div>
+      )}
     </div>
+</SignedIn>
+<SignedOut>
+  <SignInButton/>
+</SignedOut>
+
+</>
+    
   );
 }

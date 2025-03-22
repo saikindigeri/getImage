@@ -1,64 +1,34 @@
 import { NextResponse } from "next/server";
+import OpenAI from "openai";
 
-import pool from "@/lib/db";
-import { auth } from "@clerk/nextjs/server";
+const client = new OpenAI({
+  baseURL: "https://api.studio.nebius.com/v1/",
+  apiKey: process.env.NEBIUS_API_KEY, 
+});
 
-
-
-
-export async function POST(request: Request) {
-  const { userId } = await auth();
-
-  if (!userId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-
-  const { command } = await request.json();
-  if (!command) return NextResponse.json({ error: "Command required" }, { status: 400 });
-
+export async function POST(req: Request) {
+  const { prompt } = await req.json();
 
   try {
-    // Hugging Face Stable Diffusion API
-    const response = await fetch(
-      "https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5",
-      {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${process.env.HF_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          inputs: command, // Prompt
-        }),
-      }
-    );
+    const response = await client.images.generate({
+      model: "black-forest-labs/flux-dev",
+      response_format: "b64_json",
+      extra_body: {
+        response_extension: "webp",
+        width: 1024,
+        height: 1024,
+        num_inference_steps: 28,
+        negative_prompt: "",
+        seed: -1,
+      },
+      prompt,
+    });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.log("HF Error:", errorText);
-      throw new Error(`Hugging Face API error: ${response.statusText}`);
-    }
+    const imageBase64 = response.data[0]?.b64_json;
+    if (!imageBase64) throw new Error("Image generation failed");
 
-    // Response is a binary image – convert to URL
-    const imageBlob = await response.blob();
-    const imageUrl = URL.createObjectURL(imageBlob);
-    console.log("Generated Image URL:", imageUrl);
-
-    // Save to Supabase
-    const client = await pool.connect();
-    try {
-      const res = await client.query(
-        "INSERT INTO images (url, command, user_id) VALUES ($1, $2, $3) RETURNING *",
-        [imageUrl, command, userId]
-      );
-      console.log("DB Response:", res.rows);
-      return NextResponse.json({ imageUrl: res.rows[0].url });
-    } catch (dbError) {
-      console.error("DB Error:", dbError);
-      return NextResponse.json({ error: "Database error" }, { status: 500 });
-    } finally {
-      client.release();
-    }
+    return NextResponse.json({ imageUrl: `data:image/webp;base64,${imageBase64}` });
   } catch (error) {
-    console.error("HF Error:", error);
-    return NextResponse.json({ error: "Image generation failed" }, { status: 500 });
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

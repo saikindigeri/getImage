@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.12.5",
+    "lucide-react": "^0.483.0",
     "next": "15.2.3",
-    "openai": "^4.87.4",
+    "openai": "^4.89.0",
     "pg": "^8.14.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
