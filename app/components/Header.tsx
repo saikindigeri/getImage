@@ -21,8 +21,17 @@ const Header = () => {
 
       {/* Navigation */}
       <ul className="flex items-center space-x-8">
+      <li className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+          Features
+        </li>
         <li className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer">
-          Image
+          Gallery
+        </li>
+        <li className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+          Pricing
+        </li>
+        <li className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+          FAQ
         </li>
       </ul>
 
