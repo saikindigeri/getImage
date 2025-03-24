@@ -11,11 +11,12 @@ const client = new OpenAI({
 
 export async function POST(req: Request) {
   const { userId } = await auth(); // No need for 'await', auth() is synchronous
-  if (!userId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!userId) return NextResponse.json({ error: "Sign In to generate Image" }, { status: 401 });
+  
 
   try {
     const { prompt } = await req.json();
-
+    if (!prompt) return NextResponse.json({error:"Enter a prompt to generate Image"},{status:401});
     // Generate image using Nebius AI
     const response = await client.images.generate({
       model: "black-forest-labs/flux-dev",

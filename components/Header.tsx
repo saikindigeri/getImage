@@ -1,38 +1,59 @@
 'use client';
 
-import React, { useContext } from 'react';
-import { ThemeContext } from '../context/ThemeContext';
+import React, { useContext, useEffect, useState } from 'react';
+import { ThemeContext } from '../app/context/ThemeContext';
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline'; // Icons for theme toggle
+import { bricolage_grotesque } from '@/app/utils/font';
 
 const Header = () => {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+  const [scrolled, setScrolled] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 10) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 py-3 px-6 flex items-center justify-between
+        
         ${isDarkMode ? 'bg-gray-900/80 text-white' : 'bg-white/80 text-gray-900'}
-        backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-700/50 shadow-sm transition-all duration-300`}
+        backdrop-blur-sm   dark:border-gray-700/50 shadow-sm transition-all duration-300 *:
+        
+
+        `}
     >
       {/* Logo */}
-      <h1 className="text-xl font-semibold tracking-tight hover:text-blue-500 transition-colors duration-200">
-        Logo
+      <h1 className={`${bricolage_grotesque}text-xl leading-tight font-semibold tracking-tight hover:text-blue-500 transition-colors duration-200`}>
+        Imagify
       </h1>
 
       {/* Navigation */}
       <ul className="flex items-center space-x-8">
-      <li className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+      <a href="#features" className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer">
           Features
-        </li>
-        <li className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+        </a>
+        <a href="#gallery" className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer">
           Gallery
-        </li>
-        <li className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+        </a>
+        <a href="#pricing" className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer">
           Pricing
-        </li>
-        <li className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+        </a>
+        <a href="#FAQ" className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer">
           FAQ
-        </li>
+        </a>
       </ul>
 
       {/* Right Section: Theme Toggle + Auth */}
