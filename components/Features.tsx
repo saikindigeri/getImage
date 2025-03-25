@@ -30,6 +30,8 @@ const features = [
 const Features = () => {
   return (
     <section id="features" className="py-12 px-4 sm:px-6 mb-20">
+    
+    
       {/* Features Content */}
       <div className="max-w-6xl flex flex-col mx-auto">
         <div className="flex flex-col items-center p-2 py-2 mb-4">

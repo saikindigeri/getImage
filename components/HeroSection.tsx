@@ -53,14 +53,25 @@ const HeroSection = () => {
 return(
      <div id="hero" className="min-h-screen p-4 sm:p-6 bg-gray-100 dark:bg-gray-900 transition-colors duration-300 flex items-center justify-center relative overflow-hidden">
           {/* Background Effects */}
-        
+          <div className="absolute inset-0 z-0">
+        <motion.div
+          className="absolute w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 rounded-full blur-3xl"
+          animate={{
+            x: ['-20%', '20%'],
+            y: ['-20%', '20%'],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        />
+       
+      </div>
     
           <div className="max-w-6xl w-full flex flex-col gap-8 relative z-10 md:flex-row">
             {/* Left Side: Content */}
             <div className="flex-1 flex flex-col justify-center space-y-6">
               <div className="space-y-4">
                 <h1
-                  className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white`}
+                  className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-purple-800 dark:via-white dark:to-white`}
                 >
                   Create stunning images with a{' '}
                   <Cover  className={`${bricolage_grotesque}`}>simple prompt</Cover>
@@ -94,7 +105,7 @@ return(
                   disabled={loading}
                   className={`w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-white flex items-center justify-center gap-2 transition-all duration-300 shadow-md ${
                     loading
-                      ? 'bg-blue-400 cursor-not-allowed opacity-75'
+                      ? 'bg-purple-700 cursor-not-allowed opacity-75'
                       : 'bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 hover:from-indigo-700 hover:via-purple-600 hover:to-pink-600 active:scale-95 hover:shadow-lg'
                   }`}
                 >
@@ -213,13 +224,13 @@ return(
                   </motion.button>
                 </motion.div>
               ) : (
-                <div className="w-full max-w-md h-[400px] sm:h-[500px] flex flex-col items-center justify-center bg-white/80 dark:bg-gray-800/80 rounded-lg shadow-md backdrop-blur-sm text-center p-6">
-                  <SparklesIcon className="w-12 h-12 text-gray-400 dark:text-gray-500 mb-4" />
+                <div className="w-full max-w-md h-[400px] sm:h-[500px] flex flex-col items-center justify-center border  from-indigo-500/20 via-purple-500/20 to-pink-500/20 rounded-lg shadow-md backdrop-blur-sm text-center p-6">
+                  <SparklesIcon className="w-12 h-12 text-purple-600 dark:text-purple-500 mb-4" />
                   <h3 className="text-lg sm:text-xl font-semibold text-gray-700 dark:text-gray-200">
                     Your Image is Here
                   </h3>
                   <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 mt-2">
-                    Enter a prompt and click &quot Generate &quot to see your creation come to life!
+                    Enter a prompt and click  Generate  to see your creation come to life!
                   </p>
                 </div>
               )}

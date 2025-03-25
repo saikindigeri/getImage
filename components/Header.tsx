@@ -39,12 +39,12 @@ const Header = () => {
         `}
     >
       {/* Logo */}
-      <a href="#hero" className={`${bricolage_grotesque}text-xl leading-tight font-semibold tracking-tight hover:text-blue-500 transition-colors duration-200`}>
+      <a href="#hero" className={`${bricolage_grotesque}text-xl leading-tight font-semibold tracking-wider hover:text-blue-500 transition-colors duration-200`}>
         Imagify
       </a>
 
       {/* Navigation */}
-      <ul className="flex items-center space-x-8">
+      <ul className="flex items-center space-x-8 tracking-wide">
       <a href="#features" className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer">
           Features
         </a>
