@@ -39,8 +39,8 @@ const Header = () => {
         `}
     >
       {/* Logo */}
-      <a href="#hero" className={`${bricolage_grotesque}text-xl leading-tight font-semibold tracking-wider hover:text-blue-500 transition-colors duration-200`}>
-        Imagify
+      <a href="#hero" className={`${bricolage_grotesque}text-xl font-semibold tracking-wide hover:text-blue-500 transition-colors duration-200`}>
+      GetImage
       </a>
 
       {/* Navigation */}

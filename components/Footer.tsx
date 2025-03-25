@@ -46,7 +46,7 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="flex flex-col items-start">
             <h3 className="text-2xl font-semibold tracking-tight mb-3 text-gray-900 dark:text-white">
-              Imagify
+              GetImage
             </h3>
             <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
               Empowering creativity with cutting-edge AI image generation.
@@ -85,7 +85,7 @@ const Footer = () => {
               href="#hero"
               className=" hover:underline font-medium"
             >
-              Imagify
+              GetImage
             </Link>
             <p>All rights reserved.</p>
           </div>
