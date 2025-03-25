@@ -50,7 +50,7 @@ const FAQ = () => {
 
         <div className="space-y-0 ">
           {faqData.map((faq, index) => (
-            <div key={index} className="relative pb-3 border-b border-gray-100 dark:border-gray-500">
+            <div key={index} className="relative pb-3 border-b border-gray-300 dark:border-gray-700">
               {/* Question */}
               <button
                 onClick={() => toggleFAQ(index)}
