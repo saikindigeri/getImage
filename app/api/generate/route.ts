@@ -21,6 +21,8 @@ export async function POST(req: Request) {
     const response = await client.images.generate({
       model: "black-forest-labs/flux-dev",
       response_format: "b64_json",
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
       extra_body: {
         response_extension: "webp",
         width: 1024,
