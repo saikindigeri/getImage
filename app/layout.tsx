@@ -40,12 +40,12 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   // Basic metadata
   title: {
-    default: "Imagify - AI-Powered Image Generation",
-    template: "%s | Imagify",
+    default: "GetImage - AI-Powered Image Generation",
+    template: "%s | GetImage",
   },
   description:
-    "Create stunning AI-generated images with Imagify. Enter a prompt and watch your ideas come to life in seconds. Developed by Sai Kumar.",
-  keywords: ["AI image generation", "Imagify", "text to image", "AI art", "Sai Kumar", "image creation"],
+    "Create stunning AI-generated images with GetImage. Enter a prompt and watch your ideas come to life in seconds. Developed by Sai Kumar.",
+  keywords: ["AI image generation", "GetImage", "text to image", "AI art", "Sai Kumar", "image creation"],
   authors: [{ name: "Sai Kumar" }],
   creator: "Sai Kumar",
   publisher: "Sai Kumar",
@@ -59,17 +59,17 @@ export const metadata: Metadata = {
 
   // Open Graph metadata (for social media sharing)
   openGraph: {
-    title: "Imagify - AI-Powered Image Generation",
+    title: "GetImage - AI-Powered Image Generation",
     description:
-      "Generate beautiful images from text prompts with Imagify, an AI-powered tool by Sai Kumar. Try it now!",
+      "Generate beautiful images from text prompts with GetImage, an AI-powered tool by Sai Kumar. Try it now!",
     url: "https://get-image-mu.vercel.app", // Replace with your actual site URL
-    siteName: "Imagify",
+    siteName: "GetImage",
     images: [
       {
         url: "/og-image.jpg", // Path to an Open Graph image (e.g., 1200x630px)
         width: 1200,
         height: 630,
-        alt: "Imagify - AI Image Generation",
+        alt: "GetImage - AI Image Generation",
       },
     ],
     locale: "en_US",
@@ -79,9 +79,9 @@ export const metadata: Metadata = {
   // Twitter metadata (for Twitter cards)
   twitter: {
     card: "summary_large_image",
-    title: "Imagify - AI-Powered Image Generation",
+    title: "GetImage - AI-Powered Image Generation",
     description:
-      "Generate stunning images with Imagify, an AI-powered tool by Sai Kumar. Enter a prompt and create in seconds!",
+      "Generate stunning images with GetImage, an AI-powered tool by Sai Kumar. Enter a prompt and create in seconds!",
     creator: "@Devaa_Sai", // Replace with your Twitter handle
     images: ["/twitter-image.jpg"], // Path to a Twitter card image (e.g., 1200x600px)
   },
