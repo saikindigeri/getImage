@@ -8,6 +8,7 @@ import Pricing from '@/components/Pricing';
 import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
 import Faq from '@/components/Faq';
+import Testimonials from '@/components/Testimonials';
 
  const ImageGenerator = () => {
 
@@ -36,7 +37,9 @@ import Faq from '@/components/Faq';
    <HeroSection/>
    <Features/>
    <Pricing/>
+   <Testimonials/>
    <Faq/>
+
    <Footer/>
    </div>
   );

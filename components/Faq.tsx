@@ -1,9 +1,10 @@
 'use client';
 
-import { bricolage_grotesque, inter } from '@/app/utils/font';
+import {  inter } from '@/app/utils/font';
 import React, { useState } from 'react';
 
 // FAQ Data
+
 const faqData = [
   {
     question: 'What is Imagify?',
@@ -32,10 +33,11 @@ const faqData = [
   },
 ];
 
-const FAQ = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
 
-  const toggleFAQ = (index) => {
+const FAQ = () => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const toggleFAQ = (index:number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
@@ -48,7 +50,7 @@ const FAQ = () => {
 
         <div className="space-y-0 ">
           {faqData.map((faq, index) => (
-            <div key={index} className="relative pb-3 border-b border-gray-300">
+            <div key={index} className="relative pb-3 border-b border-gray-100 dark:border-gray-500">
               {/* Question */}
               <button
                 onClick={() => toggleFAQ(index)}
@@ -62,7 +64,7 @@ const FAQ = () => {
 
               {/* Answer */}
               {activeIndex === index && (
-                <div className="px-6 py-4 text-sm">{faq.answer}</div>
+                <div className=" py-4 text-[13px] text-gray-400 ">{faq.answer}</div>
               )}
 
               {/* Bottom Border Starting at a Fixed Point */}

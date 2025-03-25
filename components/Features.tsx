@@ -1,28 +1,29 @@
 'use client';
-
+import { WiLightning } from "react-icons/wi";
 import React from 'react';
-import { BoltIcon, PaintBrushIcon, ClockIcon } from '@heroicons/react/24/solid';
-import { bricolage_grotesque, inter } from '@/app/utils/font';
+import { PaintBrushIcon, ClockIcon } from '@heroicons/react/24/solid';
+import {  inter } from '@/app/utils/font';
+import Image from 'next/image';
 
 // Features Data (Updated with dummy image placeholders)
 const features = [
   {
-    icon: <BoltIcon className="w-6 h-6 text-indigo-500" />,
+    icon: <WiLightning className="w-10 h-10 mt-3 text-green-500" />,
     title: 'Lightning Fast',
     description: 'Generate high-quality images in seconds with our optimized AI engine.',
-    image: 'https://via.placeholder.com/300x200?text=Lightning+Fast', // Dummy image
+    image: '/first.webp', // Dummy image
   },
   {
-    icon: <PaintBrushIcon className="w-6 h-6 text-purple-500" />,
+    icon: <PaintBrushIcon className="w-10 h-10 mt-3 text-purple-700"/>,
     title: 'Creative Freedom',
     description: 'Turn any idea into a unique masterpiece with endless customization.',
-    image: 'https://via.placeholder.com/300x200?text=Creative+Freedom', // Dummy image
+    image: '/second.png', // Dummy image
   },
   {
-    icon: <ClockIcon className="w-6 h-6 text-pink-500" />,
+    icon: <ClockIcon className="w-10 h-10 mt-3  text-pink-500" />,
     title: 'Real-Time Results',
     description: 'See your vision come to life instantly as you type your prompt.',
-    image: 'https://via.placeholder.com/300x200?text=Real-Time+Results', // Dummy image
+    image: '/third.png', // Dummy image
   },
 ];
 
@@ -36,7 +37,7 @@ const Features = () => {
             AI-powered Image Generation
           </h3>
           <h1
-            className={`${inter} leading-tight mb-2 font-semibold text-5xl text-center bg-clip-text text-transparent bg-gradient-to-r from-red-500 dark:from-purple-500 via-indigo-500 to-pink-500 `}
+            className={`${inter} leading-tight mb-2 font-semibold text-5xl text-center bg-clip-text text-transparent bg-gradient-to-r from-black dark:from-purple-500 via-indigo-500 to-green-500 `}
           >
             Create stunning visuals with AI
           </h1>
@@ -60,10 +61,12 @@ const Features = () => {
               className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col items-center text-center"
             >
               {/* Dummy Image */}
-              <img
+              <Image width={200} height={200}
                 src={feature.image}
                 alt={feature.title}
-                className="w-full h-40 object-cover rounded-md mb-4"
+                layout="responsive"
+                objectFit="cover"
+                className="rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
               />
               <div className="mb-3">{feature.icon}</div>
               <h3 className={`${inter} text-lg font-medium text-gray-900 dark:text-white`}>

@@ -6,8 +6,11 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline'; // Icons for theme toggle
 import { bricolage_grotesque } from '@/app/utils/font';
 
+
 const Header = () => {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -36,17 +39,17 @@ const Header = () => {
         `}
     >
       {/* Logo */}
-      <h1 className={`${bricolage_grotesque}text-xl leading-tight font-semibold tracking-tight hover:text-blue-500 transition-colors duration-200`}>
+      <a href="#hero" className={`${bricolage_grotesque}text-xl leading-tight font-semibold tracking-tight hover:text-blue-500 transition-colors duration-200`}>
         Imagify
-      </h1>
+      </a>
 
       {/* Navigation */}
       <ul className="flex items-center space-x-8">
       <a href="#features" className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer">
           Features
         </a>
-        <a href="#gallery" className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer">
-          Gallery
+        <a href="#testimonials" className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+          Testimonials
         </a>
         <a href="#pricing" className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer">
           Pricing

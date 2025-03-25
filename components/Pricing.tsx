@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { bricolage_grotesque, inter } from '@/app/utils/font';
+import {  inter } from '@/app/utils/font';
 
 // Pricing Data
 const pricingPlans = [
@@ -18,7 +18,7 @@ const pricingPlans = [
       'Email support',
     ],
     buttonText: 'Get Started',
-    gradient: 'from-blue-600 to-blue-800',
+    gradient: 'from-purple-600 to-blue-800',
   },
   {
     title: 'Professional',
@@ -32,7 +32,7 @@ const pricingPlans = [
       'Priority email support',
     ],
     buttonText: 'Upgrade to Pro',
-    gradient: 'from-gray-700 to-gray-900',
+    gradient: 'from-red-700 to-gray-900',
     highlighted: true, // Highlight this plan
   },
   {
