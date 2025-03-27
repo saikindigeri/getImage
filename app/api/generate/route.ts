@@ -7,6 +7,7 @@ import { auth } from "@clerk/nextjs/server"; // Clerk authentication
 const client = new OpenAI({
   baseURL: "https://api.studio.nebius.com/v1/",
   apiKey: process.env.NEBIUS_API_KEY,
+  timeout:30000,
 });
 
 export async function POST(req: Request) {
@@ -18,6 +19,7 @@ export async function POST(req: Request) {
     const { prompt } = await req.json();
     if (!prompt) return NextResponse.json({error:"Enter a prompt to generate Image"},{status:401});
     // Generate image using Nebius AI
+ 
     const response = await client.images.generate({
       model: "black-forest-labs/flux-dev",
       response_format: "b64_json",
@@ -50,7 +52,7 @@ export async function POST(req: Request) {
   // Execute the query using the pool
   await pool.query(query, values);
 
-  console.log(imageUrl);
+
   return NextResponse.json({ imageUrl }, { status: 200 });
    
 
