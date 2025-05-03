@@ -34,6 +34,7 @@ const HeroSection = () => {
       }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err:any) {
+      console.log(err)
       setError(err.message);
     } finally {
       setLoading(false);
