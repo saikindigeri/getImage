@@ -10,138 +10,134 @@ import Image from 'next/image';
 // Updated Features Data with vibrant descriptions
 const features = [
   {
-    icon: <WiLightning className="w-12 h-12 text-green-400 drop-shadow-glow" />,
+    icon: <WiLightning className="w-10 h-10 text-emerald-400" />,
     title: 'Lightning Fast',
-    description: 'Unleash visuals at warp speed with our turbo-charged AI engine.',
+    description: 'Generate visuals at blazing speed with our cutting-edge AI.',
     image: '/first.webp',
-    gradient: 'from-green-500 to-teal-500',
+    gradient: 'from-emerald-500 to-teal-500',
   },
   {
-    icon: <PaintBrushIcon className="w-12 h-12 text-purple-500 drop-shadow-glow" />,
+    icon: <PaintBrushIcon className="w-10 h-10 text-rose-400" />,
     title: 'Creative Freedom',
-    description: 'Shape your wildest dreams into breathtaking art with infinite possibilities.',
+    description: 'Transform your ideas into stunning art with limitless possibilities.',
     image: '/second.png',
-    gradient: 'from-purple-600 to-indigo-600',
+    gradient: 'from-rose-500 to-pink-500',
   },
   {
-    icon: <ClockIcon className="w-12 h-12 text-pink-500 drop-shadow-glow" />,
+    icon: <ClockIcon className="w-10 h-10 text-sky-400" />,
     title: 'Real-Time Results',
-    description: 'Witness your imagination ignite instantly as you craft your vision.',
+    description: 'See your vision come to life instantly as you create.',
     image: '/third.png',
-    gradient: 'from-pink-500 to-rose-500',
+    gradient: 'from-sky-500 to-blue-500',
   },
 ];
 
 // Animation Variants
 const containerVariants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    y: 0,
-    transition: { staggerChildren: 0.2, duration: 0.8, ease: 'easeOut' },
+    transition: { staggerChildren: 0.3, duration: 0.6, ease: 'easeOut' },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 };
 
 const Features = () => {
   return (
     <section
       id="features"
-      className="py-16 px-4 sm:px-6 mb-20 bg-gradient-to-b  overflow-hidden"
+      className="py-20 px-4 sm:px-8   overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <motion.div
-          className="flex flex-col items-center text-center mb-12"
-          initial={{ opacity: 0, y: -20 }}
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
           <span
-            className={`${inter} inline-block text-sm px-4 py-1 mb-4 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 rounded-full border border-indigo-300 dark:border-indigo-700 shadow-md`}
+            className={`${inter} inline-flex items-center px-4 py-1.5 mb-4 text-sm font-medium text-emerald-600 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-900/30 rounded-full border border-emerald-200 dark:border-emerald-800`}
           >
-            AI-Powered Brilliance
+            AI-Powered Innovation
           </span>
           <h1
-            className={`${inter} text-4xl sm:text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-700 via-indigo-600 to-red-500 dark:from-purple-400 dark:via-red-400 dark:to-green-400`}
+            className={`${inter} text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text  text-black`}
           >
-            Unleash Epic Visuals
+            Create Stunning Visuals
           </h1>
           <p
-            className={`${inter} mt-4 text-lg  max-w-2xl`}
+            className={`${inter} mt-4 text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto`}
           >
-            Dive into a universe where your ideas explode into stunning, AI-crafted masterpieces with unparalleled speed and creativity.
+            Explore a world where your imagination is brought to life with AI-driven creativity, speed, and precision.
           </p>
           <motion.button
-            className={`${inter} mt-6 px-8 py-3 text-lg font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full shadow-lg hover:shadow-xl`}
-            whileHover={{ scale: 1.05, boxShadow: '0 0 15px rgba(99, 102, 241, 0.5)' }}
+            className={`${inter} mt-8 px-6 py-2.5 text-base font-medium text-white bg-gradient-to-r from-emerald-500 to-rose-500 rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-opacity-50`}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.2 }}
           >
-            Ignite Your Creativity
+            Start Creating Now
           </motion.button>
         </motion.div>
 
         {/* Features Grid */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.3 }}
         >
           {features.map((feature, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className="relative group p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden transform hover:-translate-y-2 transition-all duration-300"
+              className="relative group bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-all duration-300"
             >
-              {/* Gradient Overlay on Hover */}
-              <div
-                className={`absolute inset-0 opacity-0 group-hover:opacity-20 bg-gradient-to-br ${feature.gradient} transition-opacity duration-300`}
-              ></div>
-
               {/* Feature Image */}
-              <div className="relative w-full h-48 mb-4">
+              <div className="relative w-full h-40 sm:h-48">
                 <Image
                   src={feature.image}
                   alt={feature.title}
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-lg group-hover:scale-105 transition-transform duration-500"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
+                <div
+                  className={`absolute inset-0 opacity-0 group-hover:opacity-30 bg-gradient-to-t ${feature.gradient} transition-opacity duration-300`}
+                ></div>
               </div>
 
-              {/* Icon */}
-              <div className="relative z-10 mb-4">{feature.icon}</div>
+              {/* Content */}
+              <div className="p-6">
+                <div className="flex items-center space-x-3">
+                  {feature.icon}
+                  <h3
+                    className={`${inter} text-lg font-semibold text-gray-900 dark:text-white`}
+                  >
+                    {feature.title}
+                  </h3>
+                </div>
+                <p
+                  className={`${inter} mt-3 text-sm text-gray-500 dark:text-gray-400`}
+                >
+                  {feature.description}
+                </p>
+              </div>
 
-              {/* Title and Description */}
-              <h3
-                className={`${inter} text-xl font-semibold text-gray-900 dark:text-white relative z-10`}
-              >
-                {feature.title}
-              </h3>
-              <p
-                className={`${inter} mt-2 text-sm text-gray-600 dark:text-gray-300 relative z-10`}
-              >
-                {feature.description}
-              </p>
-
-              {/* Glow Effect */}
-              <motion.div
-                className="absolute -inset-4 bg-gradient-to-r opacity-0 group-hover:opacity-40 blur-xl pointer-events-none"
-                style={{ background: `linear-gradient(to right, ${feature.gradient.split(' ')[0]}, ${feature.gradient.split(' ')[2]})` }}
-                transition={{ duration: 0.3 }}
-              />
+              {/* Subtle Border Effect */}
+              <div
+                className={`absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-${feature.gradient.split(' ')[0].replace('from-', '')} opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`}
+              ></div>
             </motion.div>
           ))}
-        </motion.div>    </div>
-      </section>
-
+        </motion.div>
+      </div>
+    </section>
   );
 };
 

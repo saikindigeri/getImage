@@ -7,7 +7,7 @@ import { auth } from "@clerk/nextjs/server"; // Clerk authentication
 const client = new OpenAI({
   baseURL: "https://api.studio.nebius.com/v1/",
   apiKey: process.env.NEBIUS_API_KEY,
-  timeout:30000,
+  timeout:50000,
 });
 
 export async function POST(req: Request) {
