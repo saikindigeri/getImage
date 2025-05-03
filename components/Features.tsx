@@ -66,7 +66,7 @@ const Features = () => {
             AI-Powered Innovation
           </span>
           <h1
-            className={`${inter} text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text  text-black`}
+            className={`${inter} text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text  text-black dark:text-white`}
           >
             Create Stunning Visuals
           </h1>
