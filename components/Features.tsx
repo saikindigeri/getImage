@@ -76,7 +76,7 @@ const Features = () => {
             Explore a world where your imagination is brought to life with AI-driven creativity, speed, and precision.
           </p>
           <motion.button
-            className={`${inter} mt-8 px-6 py-2.5 text-base font-medium text-white bg-gradient-to-r from-emerald-500 to-rose-500 rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-opacity-50`}
+            className={`${inter} mt-8 px-6 py-2.5 text-base font-medium text-white bg-gradient-to-r from-violet-500 to-rose-500 rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-opacity-50`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}
@@ -105,7 +105,7 @@ const Features = () => {
                   src={feature.image}
                   alt={feature.title}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="object-cover  transition-transform duration-500"
                 />
                 <div
                   className={`absolute inset-0 opacity-0 group-hover:opacity-30 bg-gradient-to-t ${feature.gradient} transition-opacity duration-300`}
