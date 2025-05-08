@@ -52,7 +52,7 @@ export const metadata: Metadata = {
 
   // Favicon and icons (visible in browser tab)
   icons: {
-    icon: "/logo.png", // Path to your favicon
+    icon: "/web.png", // Path to your favicon
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
