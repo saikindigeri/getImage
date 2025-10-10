@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { PhotoIcon, SparklesIcon, ArrowDownTrayIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
 import { Cover } from '@/components/ui/cover';
-import { bricolage_grotesque } from '@/app/utils/font';
+import { bricolage_grotesque, instrument } from '@/app/utils/font';
 
 const HeroSection = () => {
   const [prompt, setPrompt] = useState('');
@@ -76,7 +76,7 @@ const HeroSection = () => {
         <div className="flex-1 flex flex-col justify-center space-y-6">
           <div className="space-y-4">
             <h1
-              className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-purple-800 dark:via-white dark:to-white`}
+              className={` ${instrument} italic font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl  bg-clip-text  bg-gradient-to-b text-black dark:text-white` }
             >
               Create stunning images with a{' '}
               <Cover className={`${bricolage_grotesque}`}>simple prompt</Cover>
@@ -109,10 +109,10 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               onClick={handleGenerateImage}
               disabled={loading}
-              className={`w-full sm:w-auto px-6 py-3 rounded-lg text-white flex items-center justify-center gap-2 transition-all duration-300 shadow-md ${
+              className={`w-full sm:w-auto px-6 py-3 cursor-pointer rounded-lg text-white flex items-center justify-center gap-2 transition-all duration-300 shadow-md ${
                 loading
-                  ? 'bg-purple-700 cursor-not-allowed opacity-75'
-                  : 'bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 hover:from-indigo-700 hover:via-purple-600 hover:to-pink-600 active:scale-95 hover:shadow-lg'
+                  ? 'bg-black cursor-not-allowed opacity-75'
+                  : 'bg-gradient-to-r from-red-600 via-black-500 to-yellow-500 active:scale-95 hover:shadow-lg'
               }`}
             >
               {loading ? (
@@ -246,7 +246,7 @@ const HeroSection = () => {
             </motion.div>
           ) : (
             <div className="w-full max-w-md h-[400px] sm:h-[500px] flex flex-col items-center justify-center border from-indigo-500/20 via-purple-500/20 to-pink-500/20 rounded-lg shadow-md backdrop-blur-sm text-center p-6">
-              <SparklesIcon className="w-12 h-12 text-purple-600 dark:text-purple-500 mb-4" />
+              <SparklesIcon className="w-12 h-12 text-black dark:text-white mb-4" />
               <h3 className="text-lg sm:text-xl font-semibold text-gray-700 dark:text-gray-200">
                 Your Image is Here
               </h3>

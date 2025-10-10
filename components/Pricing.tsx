@@ -18,7 +18,7 @@ const pricingPlans = [
       'Email support',
     ],
     buttonText: 'Get Started',
-    gradient: 'from-purple-600 to-blue-800',
+    gradient: 'from-black to-yellow-800',
   },
   {
     title: 'Professional',

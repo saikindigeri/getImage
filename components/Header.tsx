@@ -62,7 +62,7 @@ const Header = () => {
         <li>
           <a
             href="#features"
-            className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer"
+            className="text-sm font-medium hover:text-gray-500 transition-colors duration-200 cursor-pointer"
           >
             Features
           </a>
@@ -70,7 +70,7 @@ const Header = () => {
         <li>
           <a
             href="#testimonials"
-            className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer"
+            className="text-sm font-medium hover:text-gray-500 transition-colors duration-200 cursor-pointer"
           >
             Testimonials
           </a>
@@ -78,7 +78,7 @@ const Header = () => {
         <li>
           <a
             href="#pricing"
-            className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer"
+            className="text-sm font-medium hover:text-gray-500 transition-colors duration-200 cursor-pointer"
           >
             Pricing
           </a>
@@ -86,7 +86,7 @@ const Header = () => {
         <li>
           <a
             href="#FAQ"
-            className="text-sm font-medium hover:text-blue-500 transition-colors duration-200 cursor-pointer"
+            className="text-sm font-medium hover:text-gray-500 transition-colors duration-200 cursor-pointer"
           >
             FAQ
           </a>
@@ -147,7 +147,7 @@ const Header = () => {
         {/* Authentication */}
         <SignedOut>
           <SignInButton mode="modal">
-            <button className="px-4 py-1.5 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-all duration-200 active:scale-95">
+            <button className="px-4 py-1.5 text-sm font-medium text-white bg-black rounded-md hover:bg-red-700 transition-all duration-200 active:scale-95">
               Sign In
             </button>
           </SignInButton>

@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { WiLightning } from 'react-icons/wi';
 import { PaintBrushIcon, ClockIcon } from '@heroicons/react/24/solid';
-import { inter } from '@/app/utils/font';
+import { instrument, inter } from '@/app/utils/font';
 import Image from 'next/image';
 
 // Updated Features Data with vibrant descriptions
@@ -61,12 +61,12 @@ const Features = () => {
           transition={{ duration: 0.8 }}
         >
           <span
-            className={`${inter} inline-flex items-center px-4 py-1.5 mb-4 text-sm font-medium text-emerald-600 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-900/30 rounded-full border border-emerald-200 dark:border-emerald-800`}
+            className={`${inter} inline-flex items-center px-4 py-1.5 mb-4 text-sm font-medium text-emerald-600 dark:text-black bg-gray-200 dark:bg-gray-200 rounded-full border border-emerald-200 dark:border-emerald-800`}
           >
             AI-Powered Innovation
           </span>
           <h1
-            className={`${inter} text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text  text-black dark:text-white`}
+            className={`${instrument} text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text  text-black dark:text-white`}
           >
             Create Stunning Visuals
           </h1>
@@ -76,7 +76,7 @@ const Features = () => {
             Explore a world where your imagination is brought to life with AI-driven creativity, speed, and precision.
           </p>
           <motion.button
-            className={`${inter} mt-8 px-6 py-2.5 text-base font-medium text-white bg-gradient-to-r from-violet-500 to-rose-500 rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-opacity-50`}
+            className={`${instrument} mt-8 px-6 py-2.5 text-base font-medium text-white bg-gradient-to-r from-black dark:from-white dark:text-black rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-opacity-50`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}
