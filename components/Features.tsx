@@ -107,7 +107,7 @@ const Features = () => {
                 <div className="p-6 space-y-3">
                   <div className="flex items-center gap-3">
                     <Icon className="w-6 h-6 text-orange-600" />
-                    <h3 className={cn("text-xl font-semibold text-gray-900 dark:text-white", inter.className)}>
+                    <h3 className={cn("text-xl font-semibold text-gray-900 dark:text-white", inter)}>
                       {feature.title}
                     </h3>
                   </div>

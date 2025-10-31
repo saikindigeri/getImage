@@ -85,7 +85,7 @@ const FAQ = () => {
                   aria-controls={`faq-answer-${index}`}
                   className="w-full px-6 py-4 flex justify-between items-center text-left focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 dark:focus:ring-offset-black transition-all hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
-                  <span className={`${inter.className} text-base font-medium text-gray-900 dark:text-white`}>
+                  <span className={`${inter} text-base font-medium text-gray-900 dark:text-white`}>
                     {faq.question}
                   </span>
                   <span className="ml-4 flex-shrink-0">
@@ -109,7 +109,7 @@ const FAQ = () => {
                       className="overflow-hidden"
                     >
                       <div className="px-6 pb-5">
-                        <p className={`${inter.className} text-sm text-gray-600 dark:text-gray-400 leading-relaxed`}>
+                        <p className={`${inter} text-sm text-gray-600 dark:text-gray-400 leading-relaxed`}>
                           {faq.answer}
                         </p>
                       </div>
