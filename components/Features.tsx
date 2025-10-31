@@ -2,84 +2,74 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { WiLightning } from 'react-icons/wi';
-import { PaintBrushIcon, ClockIcon } from '@heroicons/react/24/solid';
-import { instrument, inter } from '@/app/utils/font';
+import { Zap, Palette, Clock } from 'lucide-react';
+import { inter } from '@/app/utils/font';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
-// Updated Features Data with vibrant descriptions
 const features = [
   {
-    icon: <WiLightning className="w-10 h-10 text-emerald-400" />,
+    icon: Zap,
     title: 'Lightning Fast',
     description: 'Generate visuals at blazing speed with our cutting-edge AI.',
     image: '/first.webp',
-    gradient: 'from-emerald-500 to-teal-500',
   },
   {
-    icon: <PaintBrushIcon className="w-10 h-10 text-rose-400" />,
+    icon: Palette,
     title: 'Creative Freedom',
     description: 'Transform your ideas into stunning art with limitless possibilities.',
     image: '/second.png',
-    gradient: 'from-rose-500 to-pink-500',
   },
   {
-    icon: <ClockIcon className="w-10 h-10 text-sky-400" />,
+    icon: Clock,
     title: 'Real-Time Results',
     description: 'See your vision come to life instantly as you create.',
     image: '/third.png',
-    gradient: 'from-sky-500 to-blue-500',
   },
 ];
 
-// Animation Variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.3, duration: 0.6, ease: 'easeOut' },
+    transition: { staggerChildren: 0.2, delayChildren: 0.1 },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+  hidden: { opacity: 0, y: 15 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
 const Features = () => {
   return (
-    <section
-      id="features"
-      className="py-20 px-4 sm:px-8   overflow-hidden"
-    >
+    <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-white dark:bg-black">
       <div className="max-w-7xl mx-auto">
-        {/* Header Section */}
+
+        {/* Header */}
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-          <span
-            className={`${inter} inline-flex items-center px-4 py-1.5 mb-4 text-sm font-medium text-emerald-600 dark:text-black bg-gray-200 dark:bg-gray-200 rounded-full border border-emerald-200 dark:border-emerald-800`}
-          >
+          <span className="inline-block px-3 py-1 text-xs font-medium tracking-wider text-orange-600 uppercase bg-orange-100 dark:bg-orange-900 rounded-full mb-4">
             AI-Powered Innovation
           </span>
-          <h1
-            className={`${instrument} text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text  text-black dark:text-white`}
-          >
+
+          <h1 className={cn("text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white", inter.className)}>
             Create Stunning Visuals
           </h1>
-          <p
-            className={`${inter} mt-4 text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto`}
-          >
+
+          <p className="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Explore a world where your imagination is brought to life with AI-driven creativity, speed, and precision.
           </p>
+
           <motion.button
-            className={`${instrument} mt-8 px-6 py-2.5 text-base font-medium text-white bg-gradient-to-r from-black dark:from-white dark:text-black rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-opacity-50`}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
+            className="mt-8 px-6 py-3 text-base font-medium text-white bg-black dark:bg-white dark:text-black rounded-lg shadow-sm hover:bg-orange-700 hover:shadow-md transition-all duration-200"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
           >
             Start Creating Now
           </motion.button>
@@ -87,52 +77,47 @@ const Features = () => {
 
         {/* Features Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="relative group bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-all duration-300"
-            >
-              {/* Feature Image */}
-              <div className="relative w-full h-40 sm:h-48">
-                <Image
-                  src={feature.image}
-                  alt={feature.title}
-                  fill
-                  className="object-cover  transition-transform duration-500"
-                />
-             
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <div className="flex items-center space-x-3">
-                  {feature.icon}
-                  <h3
-                    className={`${inter} text-lg font-semibold text-gray-900 dark:text-white`}
-                  >
-                    {feature.title}
-                  </h3>
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <motion.article
+                key={index}
+                variants={itemVariants}
+                className="group relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-800"
+              >
+                {/* Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={feature.image}
+                    alt={feature.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <p
-                  className={`${inter} mt-3 text-sm text-gray-500 dark:text-gray-400`}
-                >
-                  {feature.description}
-                </p>
-              </div>
 
-              {/* Subtle Border Effect */}
-              <div
-                className={`absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-${feature.gradient.split(' ')[0].replace('from-', '')} opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`}
-              ></div>
-            </motion.div>
-          ))}
+                {/* Content */}
+                <div className="p-6 space-y-3">
+                  <div className="flex items-center gap-3">
+                    <Icon className="w-6 h-6 text-orange-600" />
+                    <h3 className={cn("text-xl font-semibold text-gray-900 dark:text-white", inter.className)}>
+                      {feature.title}
+                    </h3>
+                  </div>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              </motion.article>
+            );
+          })}
         </motion.div>
       </div>
     </section>

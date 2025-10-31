@@ -1,12 +1,11 @@
 'use client';
 
-import { bricolage_grotesque, inter } from '@/app/utils/font';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaTwitter, FaInstagram } from 'react-icons/fa'; // Importing Twitter and Instagram icons from react-icons
+import { inter } from '@/app/utils/font';
+import { Twitter, Instagram } from 'lucide-react';
 import Link from 'next/link';
 
-// Footer Links Data
 const footerLinks = [
   {
     title: 'Company',
@@ -36,36 +35,39 @@ const footerLinks = [
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const twitterHandle = '@Devaa_Sai'; 
+  const twitterHandle = 'Devaa_Sai';
 
   return (
-    <footer className={`${bricolage_grotesque} py-8 px-4 sm:px-6 relative overflow-hidden bg-gray-100 dark:bg-gray-900`}>
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {/* Brand Section */}
-          <div className="flex flex-col items-start">
-            <h3 className="text-2xl font-semibold tracking-tight mb-3 text-gray-900 dark:text-white">
+    <footer className="bg-gray-50 dark:bg-black py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-200 dark:border-gray-800">
+      <div className="max-w-7xl mx-auto">
+
+        {/* Main Footer */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+          {/* Brand */}
+          <div className="space-y-3">
+            <Link href="/" className="text-2xl font-bold text-gray-900 dark:text-white">
               GetImage
-            </h3>
-            <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            </Link>
+            <p className={`${inter.className} text-sm text-gray-600 dark:text-gray-400`}>
               Empowering creativity with cutting-edge AI image generation.
             </p>
           </div>
 
-          {/* Navigation Links */}
-          {footerLinks.map((section, index) => (
-            <div key={index} className="flex flex-col">
-              <h4 className={`${inter} text-lg font-medium mb-2 text-gray-900 dark:text-white`}>{section.title}</h4>
-              <ul className="space-y-1">
-                {section.links.map((link, idx) => (
-                  <li key={idx}>
-                    <a
+          {/* Links */}
+          {footerLinks.map((section) => (
+            <div key={section.title}>
+              <h3 className={`${inter.className} text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-3`}>
+                {section.title}
+              </h3>
+              <ul className="space-y-2">
+                {section.links.map((link) => (
+                  <li key={link.name}>
+                    <Link
                       href={link.href}
-                      className={`${inter} text-sm text-gray-400 hover:text-purple-500 dark:hover:text-purple-400 transition-colors duration-200`}
+                      className={`${inter.className} text-sm text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-500 transition-colors`}
                     >
                       {link.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -74,77 +76,51 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <hr className="my-6 border-gray-200 dark:border-gray-700" />
+        <hr className="border-gray-200 dark:border-gray-800" />
 
-        {/* Copyright, Social Icons, and Bottom Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600 dark:text-gray-300 gap-4 md:gap-0">
-          {/* Left Section: Copyright and Imagify */}
-          <div className="flex items-center space-x-2">
-            <p>© {currentYear}</p>
-            <Link
-              href="#hero"
-              className=" hover:underline font-medium"
+        {/* Bottom Bar */}
+        <div className="mt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600 dark:text-gray-400 gap-4">
+          {/* Copyright */}
+          <p className={`${inter.className}`}>
+            © {currentYear} GetImage. All rights reserved.
+          </p>
+
+          {/* Social + Links */}
+          <div className="flex items-center gap-6">
+            {/* Twitter */}
+            <a
+              href={`https://twitter.com/${twitterHandle}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-gray-600 dark:text-gray-400 hover:text-orange-600 transition-colors"
             >
-              GetImage
-            </Link>
-            <p>All rights reserved.</p>
-          </div>
+              <Twitter className="w-4 h-4" />
+              <span className={`${inter.className}`}>@{twitterHandle}</span>
+            </a>
 
-          {/* Right Section: Twitter Username, Social Icons, and Links */}
-          <div className="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-6">
-            {/* Twitter Username */}
-            <p className="flex items-center space-x-2">
-              <span>Follow us on</span>
-             
-            </p>
+            {/* Instagram */}
+            <motion.a
+              href="https://instagram.com/sai.kindigeri"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              className="text-gray-600 dark:text-gray-400 hover:text-orange-600 transition-colors"
+            >
+              <Instagram className="w-5 h-5" />
+              <span className="sr-only">Instagram</span>
+            </motion.a>
 
-            {/* Social Icons */}
-            <div className="flex items-center space-x-4">
-              <motion.a
-                href={`https://twitter.com/${twitterHandle.replace('@', '')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-                className="text-gray-400 hover:text-purple-500 dark:hover:text-purple-400"
-              >
-                <FaTwitter className="w-5 h-5" />
-                <span className="sr-only">Twitter</span>
-              </motion.a>
-
-              <motion.a
-                href="https://instagram.com/sai.kindigeri" // Replace with your Instagram handle
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-                className="text-gray-400 hover:text-purple-500 dark:hover:text-purple-400"
-              >
-                <FaInstagram className="w-5 h-5" />
-                <span className="sr-only">Instagram</span>
-              </motion.a>
-            </div>
-
-            {/* Footer Links */}
-            <div className="flex items-center space-x-4">
-              <a
-                href="#"
-                className="text-gray-400 hover:text-purple-500 dark:hover:text-purple-400 transition-colors duration-200"
-              >
+            {/* Quick Links */}
+            <div className="hidden sm:flex items-center gap-4">
+              <Link href="#" className="hover:text-orange-600 transition-colors">
                 Terms
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-purple-500 dark:hover:text-purple-400 transition-colors duration-200"
-              >
+              </Link>
+              <Link href="#" className="hover:text-orange-600 transition-colors">
                 Privacy
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-purple-500 dark:hover:text-purple-400 transition-colors duration-200"
-              >
+              </Link>
+              <Link href="#" className="hover:text-orange-600 transition-colors">
                 Support
-              </a>
+              </Link>
             </div>
           </div>
         </div>

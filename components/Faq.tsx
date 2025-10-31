@@ -1,9 +1,11 @@
+
+
 'use client';
 
-import {  inter } from '@/app/utils/font';
 import React, { useState } from 'react';
-
-// FAQ Data
+import { motion, AnimatePresence } from 'framer-motion';
+import { inter, instrument } from '@/app/utils/font';
+import { Plus, Minus } from 'lucide-react';
 
 const faqData = [
   {
@@ -33,44 +35,89 @@ const faqData = [
   },
 ];
 
-
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  const toggleFAQ = (index:number) => {
-    setActiveIndex(activeIndex === index ? null : index);
+
+  const toggleFAQ = (index: number) => {
+
+    console.log("first")
+
+    console.log("clicked")
+
+    setActiveIndex((prev) => (prev === index ? null : index));
   };
 
   return (
-    <section id="FAQ" className="py-12 px-2 sm:px-6 relative overflow-hidden mb-23">
+    <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-black">
       <div className="max-w-4xl mx-auto">
-        <h2 className={`${inter} text-3xl sm:text-4xl font-bold text-center mb-10`}>
+
+        {/* Heading – Elegant with Instrument Serif */}
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className={`${instrument.className} text-4xl sm:text-5xl font-bold text-center text-gray-900 dark:text-white mb-12`}
+        >
           Frequently Asked Questions
-        </h2>
+        </motion.h2>
 
-        <div className="space-y-0 ">
-          {faqData.map((faq, index) => (
-            <div key={index} className="relative pb-3 border-b border-gray-300 dark:border-gray-700">
-              {/* Question */}
-              <button
-                onClick={() => toggleFAQ(index)}
-                className="w-full  py-3  flex justify-between items-center"
+        {/* FAQ Items */}
+        <div className="space-y-4">
+          {faqData.map((faq, index) => {
+            const isOpen = activeIndex === index;
+
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden bg-white dark:bg-gray-900 shadow-sm hover:shadow-md transition-shadow"
               >
-                <span className={`${inter} text-sm  font-medium`}>{faq.question}</span>
-                <span className="text-sm font-medium">
-                  {activeIndex === index ? '−' : '+'}
-                </span>
-              </button>
+                {/* Question Button */}
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${index}`}
+                  className="w-full px-6 py-4 flex justify-between items-center text-left focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 dark:focus:ring-offset-black transition-all hover:bg-gray-50 dark:hover:bg-gray-800"
+                >
+                  <span className={`${inter.className} text-base font-medium text-gray-900 dark:text-white`}>
+                    {faq.question}
+                  </span>
+                  <span className="ml-4 flex-shrink-0">
+                    {isOpen ? (
+                      <Minus className="w-5 h-5 text-orange-600" />
+                    ) : (
+                      <Plus className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+                    )}
+                  </span>
+                </button>
 
-              {/* Answer */}
-              {activeIndex === index && (
-                <div className=" py-4 text-[13px] text-gray-400 ">{faq.answer}</div>
-              )}
-
-              {/* Bottom Border Starting at a Fixed Point */}
-              <div className="w-full  ml-6"></div>
-            </div>
-          ))}
+                {/* Answer – Animated */}
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      id={`faq-answer-${index}`}
+                      initial={{ height: 0, opacity: 0 }}
+                       animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-5">
+                        <p className={`${inter.className} text-sm text-gray-600 dark:text-gray-400 leading-relaxed`}>
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

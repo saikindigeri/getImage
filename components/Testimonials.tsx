@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { inter } from '@/app/utils/font';
 import Image from 'next/image';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const testimonials = [
   {
@@ -45,97 +45,101 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [index, setIndex] = useState(0);
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
-    );
+    setIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
   };
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-    );
+    setIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   };
 
-  const currentTestimonial = testimonials[currentIndex];
-
   return (
-    <section id="testimonials" className="py-12 mb-20 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto relative">
-        {/* Section Heading */}
-        <h2
-          className={`${inter} text-3xl sm:text-4xl font-bold text-center mb-10`}
+    <section id="testimonials" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-black">
+      <div className="max-w-4xl mx-auto text-center">
+
+        {/* Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className={`${inter.className} text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-12`}
         >
-          What Our Users Say
-        </h2>
+          Loved by Creators
+        </motion.h2>
 
-        {/* Testimonial Card with Animation */}
-        <div className="flex justify-center items-center relative">
-          {/* Navigation Buttons - Adjusted for Mobile */}
-          <motion.button
-            onClick={handlePrev}
-            className="absolute left-0 sm:left-[-48px] top-1/2 transform -translate-y-1/2 p-2 sm:p-3 z-10"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            aria-label="Previous testimonial"
-          >
-            <ChevronLeftIcon className="w-6 h-6 text-gray-600 dark:text-gray-300" />
-          </motion.button>
-
+        {/* Testimonial Card */}
+        <div className="relative">
           <AnimatePresence mode="wait">
             <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, x: 50 }}
+              key={index}
+              initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.5 }}
-              className="w-full max-w-3xl p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center bg-white dark:bg-gray-800"
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.4, ease: 'easeInOut' }}
+              className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-sm border border-gray-200 dark:border-gray-800"
             >
-              {/* User Image */}
-              <div className="relative w-20 h-20 mb-4">
-                <Image
-                  src={currentTestimonial.image}
-                  alt={currentTestimonial.name}
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-full border-2 border-purple-300"
-                />
+              <div className="flex flex-col items-center">
+                {/* Avatar */}
+                <div className="relative w-20 h-20 mb-5 rounded-full overflow-hidden ring-4 ring-orange-500/20">
+                  <Image
+                    src={testimonials[index].image}
+                    alt={testimonials[index].name}
+                    fill
+                    className="object-cover"
+                    sizes="80px"
+                  />
+                </div>
+
+                {/* Name & Role */}
+                <h3 className={`${inter.className} text-xl font-semibold text-gray-900 dark:text-white`}>
+                  {testimonials[index].name}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                  {testimonials[index].role}
+                </p>
+
+                {/* Feedback */}
+                <p className={`${inter.className} text-base text-gray-700 dark:text-gray-300 italic leading-relaxed max-w-2xl`}>
+                  &ldquo;{testimonials[index].feedback}&rdquo;
+                </p>
               </div>
-
-              {/* User Name and Role */}
-              <h3
-                className={`${inter} text-lg font-semibold text-gray-900 dark:text-white mb-1`}
-              >
-                {currentTestimonial.name}
-              </h3>
-              <p
-                className={`${inter} text-sm text-gray-500 dark:text-gray-400 mb-3`}
-              >
-                {currentTestimonial.role}
-              </p>
-
-              {/* Feedback */}
-              <p
-                className={`${inter} text-sm text-gray-600 dark:text-gray-300 italic`}
-              >
-                &quot;{currentTestimonial.feedback}&quot;
-              </p>
             </motion.div>
           </AnimatePresence>
 
-          <motion.button
+          {/* Navigation Buttons - Hidden on mobile */}
+          <button
+            onClick={handlePrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all"
+            aria-label="Previous testimonial"
+          >
+            <ChevronLeft className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+          </button>
+
+          <button
             onClick={handleNext}
-            className="absolute right-0 sm:right-[-48px] top-1/2 transform -translate-y-1/2 p-2 sm:p-3 z-10"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
+            className="absolute right-0 top-1/2 -translate-y-1/2 hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all"
             aria-label="Next testimonial"
           >
-            <ChevronRightIcon className="w-6 h-6 text-gray-600 dark:text-gray-300" />
-          </motion.button>
+            <ChevronRight className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+          </button>
+        </div>
+
+        {/* Dots Indicator */}
+        <div className="flex justify-center gap-2 mt-8">
+          {testimonials.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIndex(i)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                i === index
+                  ? 'w-8 bg-orange-600'
+                  : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400'
+              }`}
+              aria-label={`Go to testimonial ${i + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>
