@@ -1,3 +1,5 @@
+
+/* eslint-disable */
 'use client';
 
 import React, { useState } from 'react';
@@ -80,13 +82,14 @@ const HeroSection = () => {
           className="space-y-6"
         >
           <div className="space-y-4">
-            <h1 className={`${instrument.className} text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white`}>
+         
+            <h1 className={`${inter} text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white`}>
               Create stunning images with a{' '}
               <span className="bg-gradient-to-r from-red-600 via-purple-700 to-black dark:to-yellow-400 bg-clip-text text-transparent">
                 simple prompt
               </span>
             </h1>
-            <p className={`${inter.className} text-lg text-gray-600 dark:text-gray-400`}>
+            <p className={`${inter} text-lg text-gray-600 dark:text-gray-400`}>
               Transform your ideas into beautiful, high-quality images in seconds. Our AI understands your vision and brings it to life with exceptional detail.
             </p>
           </div>

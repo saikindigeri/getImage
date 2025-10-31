@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { inter, instrument } from '@/app/utils/font';
 import { Plus, Minus } from 'lucide-react';
+import { Playfair, Playfair_Display } from 'next/font/google';
 
 const faqData = [
   {
@@ -56,9 +57,9 @@ const FAQ = () => {
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+
           transition={{ duration: 0.6 }}
-          className={`${instrument.className} text-4xl sm:text-5xl font-bold text-center text-gray-900 dark:text-white mb-12`}
+            className={`${inter} text-3xl text-center sm:text-4xl font-bold text-gray-900 dark:text-white mb-12`}
         >
           Frequently Asked Questions
         </motion.h2>
@@ -73,7 +74,7 @@ const FAQ = () => {
                 key={index}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+ 
                 transition={{ delay: index * 0.1 }}
                 className="border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden bg-white dark:bg-gray-900 shadow-sm hover:shadow-md transition-shadow"
               >

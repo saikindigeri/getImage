@@ -12,7 +12,7 @@ const features = [
     icon: Zap,
     title: 'Lightning Fast',
     description: 'Generate visuals at blazing speed with our cutting-edge AI.',
-    image: '/first.webp',
+    image: '/first.png',
   },
   {
     icon: Palette,
@@ -51,14 +51,14 @@ const Features = () => {
           className="text-center mb-16"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+
           transition={{ duration: 0.6 }}
         >
           <span className="inline-block px-3 py-1 text-xs font-medium tracking-wider text-orange-600 uppercase bg-orange-100 dark:bg-orange-900 rounded-full mb-4">
             AI-Powered Innovation
           </span>
 
-          <h1 className={cn("text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white", inter.className)}>
+          <h1 className={cn("text-3xl sm:text-5xl  font-bold text-gray-900 dark:text-white", inter)}>
             Create Stunning Visuals
           </h1>
 
@@ -81,7 +81,7 @@ const Features = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+
         >
           {features.map((feature, index) => {
             const Icon = feature.icon;
@@ -92,7 +92,7 @@ const Features = () => {
                 className="group relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-800"
               >
                 {/* Image */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-96 overflow-hidden">
                   <Image
                     src={feature.image}
                     alt={feature.title}

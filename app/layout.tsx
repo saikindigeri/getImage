@@ -87,7 +87,7 @@ export const metadata: Metadata = {
   },
 
   // Additional metadata
-  viewport: "width=device-width, initial-scale=1",
+
   robots: "index, follow",
   alternates: {
     canonical: "https://get-image-mu.vercel.app", // Replace with your actual site URL

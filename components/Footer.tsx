@@ -48,7 +48,7 @@ const Footer = () => {
             <Link href="/" className="text-2xl font-bold text-gray-900 dark:text-white">
               GetImage
             </Link>
-            <p className={`${inter.className} text-sm text-gray-600 dark:text-gray-400`}>
+            <p className={`${inter} text-sm text-gray-600 dark:text-gray-400`}>
               Empowering creativity with cutting-edge AI image generation.
             </p>
           </div>
@@ -56,7 +56,7 @@ const Footer = () => {
           {/* Links */}
           {footerLinks.map((section) => (
             <div key={section.title}>
-              <h3 className={`${inter.className} text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-3`}>
+              <h3 className={`${inter} text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-3`}>
                 {section.title}
               </h3>
               <ul className="space-y-2">

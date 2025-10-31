@@ -71,10 +71,11 @@ const Pricing = () => {
           className="text-center mb-16"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+      
           transition={{ duration: 0.6 }}
         >
-          <h2 className={`${inter.className} text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white`}>
+          <h2    className={`${inter} text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-12`}>
+         
             Simple, Transparent Pricing
           </h2>
           <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
@@ -88,7 +89,7 @@ const Pricing = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+
         >
           {pricingPlans.map((plan, index) => (
             <motion.article

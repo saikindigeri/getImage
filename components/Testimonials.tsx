@@ -63,8 +63,8 @@ const Testimonials = () => {
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className={`${inter.className} text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-12`}
+        
+          className={`${inter} text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-12`}
         >
           Loved by Creators
         </motion.h2>
@@ -93,7 +93,7 @@ const Testimonials = () => {
                 </div>
 
                 {/* Name & Role */}
-                <h3 className={`${inter.className} text-xl font-semibold text-gray-900 dark:text-white`}>
+                <h3 className={`${inter} text-xl font-semibold text-gray-900 dark:text-white`}>
                   {testimonials[index].name}
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
