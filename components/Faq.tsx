@@ -4,9 +4,9 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { inter, instrument } from '@/app/utils/font';
+import { inter } from '@/app/utils/font';
 import { Plus, Minus } from 'lucide-react';
-import { Playfair, Playfair_Display } from 'next/font/google';
+
 
 const faqData = [
   {

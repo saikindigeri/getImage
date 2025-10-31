@@ -64,7 +64,7 @@ const Footer = () => {
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className={`${inter.className} text-sm text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-500 transition-colors`}
+                      className={`${inter} text-sm text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-500 transition-colors`}
                     >
                       {link.name}
                     </Link>
@@ -81,7 +81,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600 dark:text-gray-400 gap-4">
           {/* Copyright */}
-          <p className={`${inter.className}`}>
+          <p className={`${inter}`}>
             © {currentYear} GetImage. All rights reserved.
           </p>
 
@@ -95,7 +95,7 @@ const Footer = () => {
               className="flex items-center gap-1.5 text-gray-600 dark:text-gray-400 hover:text-orange-600 transition-colors"
             >
               <Twitter className="w-4 h-4" />
-              <span className={`${inter.className}`}>@{twitterHandle}</span>
+              <span className={`${inter}`}>@{twitterHandle}</span>
             </a>
 
             {/* Instagram */}

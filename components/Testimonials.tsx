@@ -101,7 +101,7 @@ const Testimonials = () => {
                 </p>
 
                 {/* Feedback */}
-                <p className={`${inter.className} text-base text-gray-700 dark:text-gray-300 italic leading-relaxed max-w-2xl`}>
+                <p className={`${inter} text-base text-gray-700 dark:text-gray-300 italic leading-relaxed max-w-2xl`}>
                   &ldquo;{testimonials[index].feedback}&rdquo;
                 </p>
               </div>

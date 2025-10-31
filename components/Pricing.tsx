@@ -113,7 +113,7 @@ const Pricing = () => {
               )}
 
               {/* Plan Name */}
-              <h3 className={`${inter.className} text-2xl font-bold text-gray-900 dark:text-white`}>
+              <h3 className={`${inter} text-2xl font-bold text-gray-900 dark:text-white`}>
                 {plan.title}
               </h3>
 

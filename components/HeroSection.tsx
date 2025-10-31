@@ -169,7 +169,7 @@ const HeroSection = () => {
           ) : (
             <div className="w-full max-w-md h-96 sm:h-[500px] rounded-2xl border-2 border-dashed border-gray-300 dark:border-gray-700 flex flex-col items-center justify-center text-center p-8 bg-gray-100 dark:bg-gray-900/50">
               <Sparkles className="w-12 h-12 text-orange-600 mb-4" />
-              <h3 className={`${inter.className} text-xl font-semibold text-gray-700 dark:text-gray-200`}>
+              <h3 className={`${inter} text-xl font-semibold text-gray-700 dark:text-gray-200`}>
                 Your Image Appears Here
               </h3>
               <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">

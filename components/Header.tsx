@@ -43,7 +43,7 @@ const Header = () => {
         {/* Logo */}
         <Link
           href="/"
-          className={`${instrument.className} text-2xl font-bold tracking-tight hover:opacity-80 transition-opacity`}
+          className={`${instrument} text-2xl font-bold tracking-tight hover:opacity-80 transition-opacity`}
         >
           GetImage
         </Link>
@@ -54,7 +54,7 @@ const Header = () => {
             <Link
               key={item.name}
               href={item.href}
-              className={`${inter.className} text-sm font-medium hover:text-orange-600 transition-colors`}
+              className={`${inter} text-sm font-medium hover:text-orange-600 transition-colors`}
             >
               {item.name}
             </Link>
@@ -118,7 +118,7 @@ const Header = () => {
               key={item.name}
               href={item.href}
               onClick={closeMenu}
-              className={`${inter.className} text-lg font-medium hover:text-orange-600 transition-colors`}
+              className={`${inter} text-lg font-medium hover:text-orange-600 transition-colors`}
             >
               {item.name}
             </Link>
